@@ -3,8 +3,8 @@ import scala.io.Source
 object Main{
   def main(args: Array[String]){
     val lines = for{
-      in <- Source.stdin.getLines
-    }yield if(isPrime(in.toInt)) in else -1
+      in <- Source.stdin.getLines if isPrime(in.toInt)
+    }yield in
 
     println(lines.toList.tail.filter(_ != -1).length)
   }
