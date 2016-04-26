@@ -5,9 +5,9 @@ object Main{
   def main(args: Array[String]){
     val lines = for{
       in <- Source.stdin.getLines
-    }yield if(prime(in.toInt)) in else Nil
+    }yield in.toInt
 
-    println(lines.filter(_ != Nil).length)
+    println(lines.filter(prime(_)).length)
   }
 
   def prime(n: Int): Boolean = (2 to sqrt(n).toInt).forall(n % _ != 0)
