@@ -1,13 +1,14 @@
 import scala.io.Source
+import Math.sqrt
 
 object Main{
   def main(args: Array[String]){
     val lines = for{
-      in <- Source.stdin.getLines.toList.map(_.toInt)
-    }yield in
+      in <- Source.stdin.getLines
+    }yield if(prime(in.toInt)) in else Nil
 
-    println(lines.filter(prime(_)).length)
+    println(lines.filter(_ != Nil).length)
   }
 
-  def prime(n: Int): Boolean = (2 to n - 1).filter(m => n % m == 0).length == 0
+  def prime(n: Int): Boolean = (2 to sqrt(n).toInt).forall(n % _ != 0)
 }
