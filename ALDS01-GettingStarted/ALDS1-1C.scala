@@ -6,7 +6,7 @@ object Main{
       in <- Source.stdin.getLines if isPrime(in.toInt)
     }yield in
 
-    println(lines.toList.tail.filter(_ != -1).length)
+    println(lines.toList.tail.length)
   }
 
   def isPrime(n: Int): Boolean = (2 to Math.sqrt(n).toInt).forall(n % _ != 0)
